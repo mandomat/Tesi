@@ -15,8 +15,8 @@ import it.sp4te.css.signalprocessing.SignalProcessor;
 public abstract class SecondaryUser {
 
 	Signal s;
-	int attempts,length,inf,sup,block;
-	double energy;
+	int attempts,length,block;
+	double energy,inf,sup;
 
 	/**
 	 * Questo metodo inizializza i valori che saranno usati nei diversi tipi di
@@ -36,7 +36,7 @@ public abstract class SecondaryUser {
 	 * 
 	 **/
 
-	public void listenChannel(Signal s,int signalLength, double energy, int attempts, int inf, int sup,int block){
+	public void listenChannel(Signal s,int signalLength, double energy, int attempts, double inf, double sup,int block){
 		this.s=s;
 		this.length=signalLength;
 		this.energy=energy;
@@ -65,11 +65,13 @@ public abstract class SecondaryUser {
 			MediumSignalEnergy=SignalProcessor.computeMediumEnergy(s, length, energy, attempts, inf, sup, block);
 		}
 		else{MediumSignalEnergy=SignalProcessor.computeMediumEnergy(null, length, energy, attempts, inf, sup, block);}
-		int snr=inf-1;
+		double snr=inf;
+		//prima era snr = inf-1
 		for (int i = 0; i < MediumSignalEnergy.size(); i++) {
 			Double ED = Detector.energyDetection(
 					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), MediumSignalEnergy.get(i));
-			EnergyDetection.put((double)snr++, ED);
+			EnergyDetection.put((double)inf++, ED);
+			//prima era snr++
 		}
 
 		return SignalProcessor.orderSignal(EnergyDetection);
@@ -148,7 +150,7 @@ public abstract class SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			Double ED = Detector.energyDetection(
 					SignalProcessor.getEnergyDetectorThreshold(pfa,snr), VectorSignalEnergy.get(i));
@@ -173,12 +175,12 @@ public abstract class SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			ArrayList<Integer> snrDecisions = Detector.binaryDetector(
 					SignalProcessor.getEnergyDetectorThreshold(pfa,snr), VectorSignalEnergy.get(i));
 			decisions.add(snrDecisions);
-			snr++;
+			snr+=0.5;
 
 		}
 

@@ -33,7 +33,7 @@ public class Utils {
 	 * **/
 
 	public static ArrayList<TrustedSecondaryUser> createTrustedSecondaryUsers(int number,Signal s,
-			int SignalLength, double energy, int attempts, int inf, int sup,int block){
+			int SignalLength, double energy, int attempts, double inf, double sup,int block){
 
 		ArrayList<TrustedSecondaryUser> TrustedSecondaryUsers = new ArrayList<TrustedSecondaryUser>();
 		for(int i=0;i<number;i++){
@@ -277,18 +277,15 @@ public class Utils {
 	 * @throws Exception
 	 */
 
-	public static void generateThreshold(int length,double energy,int attempts,int inf,int sup,double pfa) throws Exception{
-		FileWriter w=new FileWriter("thresholds.txt");
+	public static void generateThreshold(int length,double energy,int attempts,double inf,double sup,double pfa) throws Exception{
+		FileWriter w=new FileWriter("thresholds"+pfa+".txt");
 		BufferedWriter b=new BufferedWriter(w);
 		ArrayList<ArrayList<Double>> VectorNoiseEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);	
-		int snr=inf;
-		b.write(" ");
-		b.write(String.valueOf(pfa+" "));     
-		b.write("\n");
+		double snr=inf;
 		for (int i = 0; i < VectorNoiseEnergy.size(); i++) {
 			b.write(snr+" "+ SignalProcessor.computeEnergyDetectorThreshold(pfa, VectorNoiseEnergy.get(i)));
-			b.write("\n");
-			snr++;
+			b.write(System.lineSeparator());
+			snr+=0.5;
 		}
 		b.close();
 	}

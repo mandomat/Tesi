@@ -66,7 +66,7 @@ public class FusionCenter {
 	 * di lunghezza pari al numero di prove contenente la decisione binaria sulla presenza o assenza dell'utente primario da parte dell'utente secondario
 	 * @return La percentuale di Detection da parte del Fusion Center dopo il metodo di fusione AND**/
 
-	public  ArrayList<Double> andDecision(int inf,int sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
+	public  ArrayList<Double> andDecision(double inf,double sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
 		ArrayList<Double> EnergyDetection = new  ArrayList<Double>();
 
 		for(int i=0;i<(sup-inf);i++){
@@ -90,7 +90,7 @@ public class FusionCenter {
 	 * di lunghezza pari al numero di prove contenente la decisione binaria sulla presenza o assenza dell'utente primario da parte dell'utente secondario
 	 * @return La percentuale di Detection da parte del Fusion Center dopo il metodo di fusione OR**/
 
-	public  ArrayList<Double> orDecision(int inf,int sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
+	public  ArrayList<Double> orDecision(double inf,double sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
 		ArrayList<Double> EnergyDetection = new  ArrayList<Double>();
 
 		for(int i=0;i<(sup-inf);i++){
@@ -115,7 +115,7 @@ public class FusionCenter {
 	 * di lunghezza pari al numero di prove contenente la decisione binaria sulla presenza o assenza dell'utente primario da parte dell'utente secondario
 	 * @return La percentuale di Detection da parte del Fusion Center dopo il metodo di fusione MAJORITY**/
 
-	public  ArrayList<Double> majorityDecision(int inf,int sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
+	public  ArrayList<Double> majorityDecision(double inf,double sup,HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision){
 
 		ArrayList<Double> EnergyDetection = new  ArrayList<Double>();
 

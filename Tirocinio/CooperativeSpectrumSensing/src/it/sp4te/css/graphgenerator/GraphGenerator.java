@@ -22,7 +22,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup) throws IOException;
+	public  void drawSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup) throws IOException;
 
 	/**
 	 * Metodo per la creazione del grafico SNR-Detection e il salvataggio al path specificato
@@ -36,7 +36,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawAndSaveSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup,String path) throws IOException;
+	public  void drawAndSaveSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup,String path) throws IOException;
 	
 	/**
 	 * Metodo per la creazione del grafico % Utenti Malevoli-Detection
@@ -49,7 +49,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawMaliciousUsersToDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup) throws IOException;
+	public  void drawMaliciousUsersToDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup) throws IOException;
 	
 	/**
 	 * Metodo per la creazione del grafico % Utenti Malevoli-Detection e salvataggio su path specificata
@@ -63,7 +63,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawAndSaveMaliciousUsersToDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup,String path) throws IOException;
+	public  void drawAndSaveMaliciousUsersToDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup,String path) throws IOException;
 
 	/**
 	 * Metodo per la creazione del grafico MDT-SNR e salvataggio su path specificata
@@ -77,7 +77,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawAndSaveMDTtoSNRGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup,String path) throws IOException;
+	public  void drawAndSaveMDTtoSNRGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup,String path) throws IOException;
 
 
 	/**
@@ -104,7 +104,7 @@ public interface GraphGenerator {
 	 * @throws IOException 
 	 **/
 	
-	public  void drawAndSaveMDTtoSNRRatioGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup,String path)throws IOException;
+	public  void drawAndSaveMDTtoSNRRatioGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup,String path)throws IOException;
 	
 	/**
 	 * Metodo per la creazione del grafico SNR-Rapporto tra MDT 

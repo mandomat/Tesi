@@ -51,15 +51,15 @@ public class Chart4jGraphGenerator implements GraphGenerator{
 	 * @throws IOException 
 	 **/
 
-	public  void drawSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, int inf, int sup) throws IOException {
+	public  void drawSNRtoDetectionGraph(String title,HashMap<String, ArrayList<Double>> detection, double inf, double sup) throws IOException {
 		ArrayList<Color> colorList=generateColor();
 		ArrayList<Shape> shapeList=generateShape();
 		int i=0;
 		// Definisco un array di Lines. In questo array inserisco i diversi
 		// grafici che voglio visualizzare
 		ArrayList<Line> lines = new ArrayList<Line>();
-		ArrayList<Integer> snr= new ArrayList<Integer>();
-		for(int j=inf;j<sup;j++){
+		ArrayList<Double> snr= new ArrayList<Double>();
+		for(double j=inf;j<sup;j+=0.5){
 			snr.add(j);
 		}
 		for (String graphName : detection.keySet()) {
@@ -676,6 +676,46 @@ public class Chart4jGraphGenerator implements GraphGenerator{
 
 		is.close();
 		os.close();
+	}
+
+
+	@Override
+	public void drawAndSaveSNRtoDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void drawMaliciousUsersToDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection,
+			double inf, double sup) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void drawAndSaveMaliciousUsersToDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection,
+			double inf, double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void drawAndSaveMDTtoSNRGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void drawAndSaveMDTtoSNRRatioGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 

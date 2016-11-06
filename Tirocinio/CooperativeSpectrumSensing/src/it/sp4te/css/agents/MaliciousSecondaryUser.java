@@ -20,7 +20,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 
 	public ArrayList<ArrayList<Integer>> computeAbsenceBinaryDecisionVector() throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
-		for(int i=inf;i<sup;i++){
+		for(double i=inf;i<sup;i+=0.5){
 			ArrayList<Integer> snrDecisions= new  ArrayList<Integer>();			
 			for(int j=0;j<attempts;j++){
 				snrDecisions.add(0);
@@ -40,7 +40,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 
 	public ArrayList<ArrayList<Integer>> computePresenceBinaryDecisionVector() throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
-		for(int i=inf;i<sup;i++){
+		for(double i=inf;i<sup;i+=0.5){
 			ArrayList<Integer> snrDecisions= new  ArrayList<Integer>();			
 			for(int j=0;j<attempts;j++){
 				snrDecisions.add(1);
@@ -68,7 +68,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.oppositeBinaryDetector(
@@ -96,7 +96,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentOppositeMaliciousBinaryDetector(
@@ -124,7 +124,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentAbsenceMaliciousBinaryDetector(
@@ -154,7 +154,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		int snr=inf;
+		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentPresenceMaliciousBinaryDetector(

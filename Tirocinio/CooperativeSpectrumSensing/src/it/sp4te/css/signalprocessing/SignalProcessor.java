@@ -1,10 +1,13 @@
 package it.sp4te.css.signalprocessing;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 import it.sp4te.css.model.AbstractSignal;
 import it.sp4te.css.model.Noise;
@@ -17,7 +20,7 @@ import it.sp4te.css.model.Signal;
  **/
 
 public class SignalProcessor {
-
+  private static Map<Double,Double> thresholds = new HashMap<>();
 	
 	/**
 	 * Metodo per ordinare una mappa in base alla chiave.
@@ -67,8 +70,8 @@ public class SignalProcessor {
 	 * @param sup Estremo superiore di SNR su cui effettuare la simulazione 
 	 * @return Una lista di Momenti**/
 
-	public static ArrayList<Moment> computeMoment(Signal s, int length, double energy,int attempts, int inf,
-			int sup) {
+	public static ArrayList<Moment> computeMoment(Signal s, int length, double energy,int attempts, double inf,
+			double sup) {
 		ArrayList<Moment> Moments = new ArrayList<Moment>();
 		for (double i = inf; i < sup; i++) {
 			Moment m = new Moment(s, attempts,i,length,energy);
@@ -128,8 +131,8 @@ public class SignalProcessor {
 	 * @param block Numero di blocchi M in cui dividere il segnale
 	 * @return Una lista di liste contenente per ogni SNR, una lista di energie medie di cardinalità pari al numero di prove**/
 
-	public static ArrayList<ArrayList<Double>> computeMediumEnergy(Signal s, int length, double energy, int attempts, int inf,
-			int sup,int block) {
+	public static ArrayList<ArrayList<Double>> computeMediumEnergy(Signal s, int length, double energy, int attempts, double inf,
+			double sup,int block) {
 
 		ArrayList<ArrayList<Double>> MediumEnergy = new ArrayList<ArrayList<Double>>();
 		//Prendo l'intervallo Snr
@@ -184,10 +187,10 @@ public class SignalProcessor {
 	 * @param sup Estremo superiore di SNR su cui effettuare la simulazione 
 	 * @return Una lista di liste contenente per ogni SNR, una lista di energie di cardinalità pari al numero di prove**/
 
-	public static ArrayList<ArrayList<Double>> computeVectorsEnergy(Signal s, int length, double energy, int attempts, int inf,
-			int sup){
+	public static ArrayList<ArrayList<Double>> computeVectorsEnergy(Signal s, int length, double energy, int attempts, double inf,
+			double sup){
 		ArrayList<ArrayList<Double>> EnergyVector = new ArrayList<ArrayList<Double>>();
-		for (double snr = inf; snr < sup; snr++) {
+		for (double snr = inf; snr < sup; snr+=0.5) {
 			ArrayList<Double> EnergyVectorTemp = new ArrayList<Double>();
 			for (int j = 0; j < attempts; j++) {
 				Noise noise = new Noise(snr,length, energy);
@@ -289,30 +292,77 @@ public class SignalProcessor {
 	 * @param Pfa probabilità di falso allarme
 	 * @param snr SNR specifico a cui prendere la soglia
 	 * @return Una soglia
+	 * @throws FileNotFoundException 
 	 * @see Utils#generateThreshold
 	 * @throws Exception
 	 */
-
-	public static double getEnergyDetectorThreshold(double Pfa, int snr) throws Exception {
-
-		FileReader f=new FileReader("threshold"+Pfa+".txt");
-		BufferedReader reader=new BufferedReader(f);
-		String s=null;
-		boolean find=false;
-		String line = reader.readLine();
-		while(line!=null & find==false) {
-			if((line.substring(0,String.valueOf(snr).length())).equals(String.valueOf(snr)) & (line.charAt(String.valueOf(snr).length())==' ')){
-				s=line;
-				find=true;
+	
+	public static double getEnergyDetectorThreshold(double pfa, double snr) throws FileNotFoundException{
+		if(!thresholds.isEmpty()){
+			Double threshold = thresholds.get(snr);
+			if(threshold!=null)
+				return threshold;
+			else {
+				System.out.println("The simulation has been aborted. Value for specific SNR not found.");
+				System.exit(1);
+				return -1;
+			
 			}
-			line = reader.readLine();
+		}
+	   readSaveThresholdsFromFile(pfa);
+	   Double threshold = thresholds.get(snr);
+	   if(threshold!=null)
+			return threshold;
+		else {
+			System.out.println("The simulation has been aborted. Value for specific SNR not found.");
+			System.exit(1);
+			return -1;
+		}
+		
+		
+		
+	}
+
+private static void readSaveThresholdsFromFile(double pfa) throws FileNotFoundException {
+	FileReader file=new FileReader("thresholds"+pfa+".txt");
+	Scanner scannerFile = new Scanner(file);
+	Scanner scannerLine = null;
+	while(scannerFile.hasNextLine()){
+		String line=scannerFile.nextLine();
+		scannerLine = new Scanner(line);
+
+		while(scannerLine.hasNext()){
+			double key = Double.parseDouble(scannerLine.next());
+			double value = Double.parseDouble(scannerLine.next());
+			thresholds.put(key, value);
 		}
 
-		s=s.substring(String.valueOf(snr).length(),s.length());
-
-		reader.close();
-		return Double.valueOf(s);
+		}
+	scannerFile.close();
+	scannerLine.close();
+	
 	}
+
+//	public static double getEnergyDetectorThreshold(double Pfa, int snr) throws Exception {
+//
+//		FileReader f=new FileReader("threshold"+Pfa+".txt");
+//		BufferedReader reader=new BufferedReader(f);
+//		String s=null;
+//		boolean find=false;
+//		String line = reader.readLine();
+//		while(line!=null & find==false) {
+//			if((line.substring(0,String.valueOf(snr).length())).equals(String.valueOf(snr)) & (line.charAt(String.valueOf(snr).length())==' ')){
+//				s=line;
+//				find=true;
+//			}
+//			line = reader.readLine();
+//		}
+//
+//		s=s.substring(String.valueOf(snr).length(),s.length());
+//
+//		reader.close();
+//		return Double.valueOf(s);
+//	}
 
 	/** Dato un array di decisioni binarie, il metodo riporta 1 se la media dell'array supera 0.5, 0 altrimenti
 	 * @param binaryDecisions un array di Decisioni binarie

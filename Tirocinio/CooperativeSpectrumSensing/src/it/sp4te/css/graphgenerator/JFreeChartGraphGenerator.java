@@ -436,6 +436,48 @@ public class JFreeChartGraphGenerator extends ApplicationFrame implements GraphG
 		return colorList;
 	}
 
+	@Override
+	public void drawSNRtoDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drawAndSaveSNRtoDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drawMaliciousUsersToDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection,
+			double inf, double sup) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drawAndSaveMaliciousUsersToDetectionGraph(String title, HashMap<String, ArrayList<Double>> detection,
+			double inf, double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drawAndSaveMDTtoSNRGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void drawAndSaveMDTtoSNRRatioGraph(String title, HashMap<String, ArrayList<Double>> detection, double inf,
+			double sup, String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 	

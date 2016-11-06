@@ -38,8 +38,8 @@ public class SpectrumSensing {
 		// Setto i parametri
 		int length = 1000; // poi 10000
 		int attempts = 1000;
-		int inf = -30;
-		int sup = 5;
+		double inf = -10;
+		double sup = 5.5;
 		int block=10; //blocchi energy Detector
 		double pfa=0.01; //probabilità di falso allarme
 
@@ -50,7 +50,6 @@ public class SpectrumSensing {
 
 		// Genero il segnale
 		Signal s = PU.createAndSend(length);
-		System.out.println(SignalProcessor.computeEnergy(s));
 		//L'utente secondario si mette in ascolto sul canale
 		SU.listenChannel(s, s.getLenght(), SignalProcessor.computeEnergy(s), attempts, inf, sup, block);
 
