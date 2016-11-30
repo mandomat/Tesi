@@ -62,16 +62,20 @@ public abstract class SecondaryUser {
 		HashMap<Double, Double> EnergyDetection = new HashMap<Double, Double>();
 		ArrayList<ArrayList<Double>> MediumSignalEnergy;
 		if(s!=null){
+
 			MediumSignalEnergy=SignalProcessor.computeMediumEnergy(s, length, energy, attempts, inf, sup, block);
 		}
-		else{MediumSignalEnergy=SignalProcessor.computeMediumEnergy(null, length, energy, attempts, inf, sup, block);}
+		else{
+			MediumSignalEnergy=SignalProcessor.computeMediumEnergy(null, length, energy, attempts, inf, sup, block);
+			}
 		double snr=inf;
 		//prima era snr = inf-1
 		for (int i = 0; i < MediumSignalEnergy.size(); i++) {
-			Double ED = Detector.energyDetection(
-					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), MediumSignalEnergy.get(i));
-			EnergyDetection.put((double)inf++, ED);
-			//prima era snr++
+	
+			
+			Double ED = Detector.energyDetection(SignalProcessor.getEnergyDetectorThreshold(pfa, snr), MediumSignalEnergy.get(i));
+			EnergyDetection.put((double)(snr+=0.5), ED);
+			//diatriba tra inf e snr
 		}
 
 		return SignalProcessor.orderSignal(EnergyDetection);
@@ -154,7 +158,7 @@ public abstract class SecondaryUser {
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			Double ED = Detector.energyDetection(
 					SignalProcessor.getEnergyDetectorThreshold(pfa,snr), VectorSignalEnergy.get(i));
-			EnergyDetection.put((double)(inf++), ED);
+			EnergyDetection.put((double)(snr+=0.5), ED);
 			//snr++;
 		}
 
@@ -175,7 +179,7 @@ public abstract class SecondaryUser {
 			VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);
 		}	
 		else{VectorSignalEnergy=SignalProcessor.computeVectorsEnergy(null, length, energy, attempts, inf, sup);}
-		double snr=inf;
+		double snr=inf-0.5;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			ArrayList<Integer> snrDecisions = Detector.binaryDetector(
 					SignalProcessor.getEnergyDetectorThreshold(pfa,snr), VectorSignalEnergy.get(i));

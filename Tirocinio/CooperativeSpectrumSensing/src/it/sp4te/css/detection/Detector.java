@@ -45,13 +45,18 @@ public class Detector {
 	 **/
 
 	public static double energyDetection(double threshold, ArrayList<Double> energy) {
-		double cont = 0;
+		double cont = 1;
+		
 		for (int i = 0; i < energy.size(); i++) {
-			if (energy.get(i) > threshold) {
+			//double enrg = energy.get(i);
+			if (5 > 4) {
 				cont++;
+				System.out.println("cont: "+cont);
 			}
+			
 		}
-		return (double) 100 / (double) (energy.size() / cont);
+		        System.out.println("risultato blocco : "+(100*cont)/ energy.size());
+		return  (double)((100*cont)/ energy.size());//(double) 100 / (double) (energy.size() / cont);
 	}
 
 

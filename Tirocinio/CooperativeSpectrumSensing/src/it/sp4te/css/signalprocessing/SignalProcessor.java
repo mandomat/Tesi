@@ -151,13 +151,18 @@ public class SignalProcessor {
 
 						Signal signal = new Signal(samples);
 						if(s!=null){
+				
 							ArrayList<Double> samplesRe=MathFunctions.SumVector(noise.splitNoise(startIndex,i-1).getSamplesRe(), s.splitSignal(startIndex,i-1).getSamplesRe());
 							ArrayList<Double> samplesIm=MathFunctions.SumVector(noise.splitNoise(startIndex,i-1).getSamplesIm(), s.splitSignal(startIndex,i-1).getSamplesIm());
 							signal.setSamplesRe(samplesRe);
 							signal.setSamplesIm(samplesIm);
 							startIndex=i;
-							avg=avg+computeEnergy(signal);}
+							avg=avg+computeEnergy(signal);
+							
+							}
+						
 						else{
+			
 							ArrayList<Double> samplesRe=noise.splitNoise(startIndex,i-1).getSamplesRe();
 							ArrayList<Double> samplesIm=noise.splitNoise(startIndex,i-1).getSamplesIm();
 							signal.setSamplesRe(samplesRe);
@@ -167,6 +172,7 @@ public class SignalProcessor {
 
 					}
 					if(i==length-1){
+
 						MediumEnergyTemp.add(avg/block);}	
 				}
 
@@ -310,6 +316,7 @@ public class SignalProcessor {
 			}
 		}
 	   readSaveThresholdsFromFile(pfa);
+	   System.out.println(""+snr);
 	   Double threshold = thresholds.get(snr);
 	   if(threshold!=null)
 			return threshold;

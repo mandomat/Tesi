@@ -32,8 +32,7 @@ public class Utils {
 	 * @return una lista di utenti secondari fidati
 	 * **/
 
-	public static ArrayList<TrustedSecondaryUser> createTrustedSecondaryUsers(int number,Signal s,
-			int SignalLength, double energy, int attempts, double inf, double sup,int block){
+	public static ArrayList<TrustedSecondaryUser> createTrustedSecondaryUsers(int number,Signal s,int SignalLength, double energy, int attempts, double inf, double sup,int block){
 
 		ArrayList<TrustedSecondaryUser> TrustedSecondaryUsers = new ArrayList<TrustedSecondaryUser>();
 		for(int i=0;i<number;i++){
