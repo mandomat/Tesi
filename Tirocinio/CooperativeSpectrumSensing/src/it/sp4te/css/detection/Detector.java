@@ -48,14 +48,13 @@ public class Detector {
 		double cont = 1;
 		
 		for (int i = 0; i < energy.size(); i++) {
-			//double enrg = energy.get(i);
-			if (5 > 4) {
+			if (energy.get(i) > threshold) {
 				cont++;
-				System.out.println("cont: "+cont);
+			
 			}
 			
 		}
-		        System.out.println("risultato blocco : "+(100*cont)/ energy.size());
+		        
 		return  (double)((100*cont)/ energy.size());//(double) 100 / (double) (energy.size() / cont);
 	}
 

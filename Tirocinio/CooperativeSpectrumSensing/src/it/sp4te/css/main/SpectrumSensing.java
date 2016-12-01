@@ -56,21 +56,19 @@ public class SpectrumSensing {
 
 		//Effettuo lo spectrum sensing
 		BlockEnergyDetection = SU.spectrumSensingBlockEnergyDetector(pfa);
-		//TraditionalEnergyDetection=SU.spectrumSensingTraditionalEnergyDetector(pfa);
-		//MomentEnergyDetection=SU.spectrumSensingMomentEnergyDetector(pfa);
-		//ProposedDetection=SU.spectrumSensingProposedDetector(pfa);
+		TraditionalEnergyDetection=SU.spectrumSensingTraditionalEnergyDetector(pfa);
+		MomentEnergyDetection=SU.spectrumSensingMomentEnergyDetector(pfa);
+		ProposedDetection=SU.spectrumSensingProposedDetector(pfa);
 		
 		
-//		for(int i=0 ;i<BlockEnergyDetection.size();i++){
-//			System.out.println(""+BlockEnergyDetection.get(i));
-//		}
+
 
 
 		// Inizializzo la Mappa per il grafico
-		//DetectionGraph.put("Moment Energy Detection", MomentEnergyDetection);
+		DetectionGraph.put("Moment Energy Detection", MomentEnergyDetection);
 		DetectionGraph.put("Block Energy Detection", BlockEnergyDetection);
-		//DetectionGraph.put("Traditional Energy Detection", TraditionalEnergyDetection);
-		//DetectionGraph.put("Proposed Detection", ProposedDetection);
+		DetectionGraph.put("Traditional Energy Detection", TraditionalEnergyDetection);
+		DetectionGraph.put("Proposed Detection", ProposedDetection);
 
 		Chart4jGraphGenerator SpectrumSensingGraph= new Chart4jGraphGenerator();
 		SpectrumSensingGraph.drawSNRtoDetectionGraph("Detection Methods",DetectionGraph, inf, sup);

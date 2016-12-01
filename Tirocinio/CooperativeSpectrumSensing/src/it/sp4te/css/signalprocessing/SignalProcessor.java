@@ -136,7 +136,7 @@ public class SignalProcessor {
 
 		ArrayList<ArrayList<Double>> MediumEnergy = new ArrayList<ArrayList<Double>>();
 		//Prendo l'intervallo Snr
-		for (double snr = inf; snr < sup; snr++) {
+		for (double snr = inf; snr < sup; snr+=0.5) {
 			ArrayList<Double> MediumEnergyTemp = new ArrayList<Double>();
 			//Per ogni prova
 			for (int j = 0; j < attempts; j++) {
@@ -316,7 +316,6 @@ public class SignalProcessor {
 			}
 		}
 	   readSaveThresholdsFromFile(pfa);
-	   System.out.println(""+snr);
 	   Double threshold = thresholds.get(snr);
 	   if(threshold!=null)
 			return threshold;
