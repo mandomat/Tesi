@@ -55,7 +55,7 @@ public class Detector {
 			
 		}
 		        
-		return  (double)((100*cont)/ energy.size());//(double) 100 / (double) (energy.size() / cont);
+		return  (double)((100*cont)/ energy.size());
 	}
 
 

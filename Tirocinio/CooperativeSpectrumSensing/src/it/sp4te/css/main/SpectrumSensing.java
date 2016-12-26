@@ -62,8 +62,6 @@ public class SpectrumSensing {
 		
 		
 
-
-
 		// Inizializzo la Mappa per il grafico
 		DetectionGraph.put("Moment Energy Detection", MomentEnergyDetection);
 		DetectionGraph.put("Block Energy Detection", BlockEnergyDetection);
