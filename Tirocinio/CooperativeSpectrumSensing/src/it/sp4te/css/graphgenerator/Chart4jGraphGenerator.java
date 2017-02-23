@@ -366,6 +366,7 @@ public class Chart4jGraphGenerator implements GraphGenerator{
 		colorList.add(Color.GREEN);
 		colorList.add(Color.VIOLET);
 		colorList.add(Color.ORANGE);
+		colorList.add(Color.BLACK);
 
 
 		return colorList;
@@ -385,6 +386,7 @@ public class Chart4jGraphGenerator implements GraphGenerator{
 		shapeList.add(Shape.SQUARE);
 		shapeList.add(Shape.CROSS);
 		shapeList.add(Shape.X);
+		shapeList.add(Shape.DIAMOND);
 
 		return shapeList;
 	}

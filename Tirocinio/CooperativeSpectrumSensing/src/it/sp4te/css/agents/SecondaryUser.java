@@ -145,7 +145,7 @@ public abstract class SecondaryUser {
 	 * @return Ritorna la percentuale di Detection calcolata sulle energie senza operazioni intermedie
 	 * @throws Exception **/
 
-	public ArrayList<Double> spectrumSensingTraditionalEnergyDetector(double pfa) throws Exception {
+	public ArrayList<Double> spectrumSensingTraditionalEnergyDetector(double pfa,String fileName) throws Exception {
 
 		HashMap<Double, Double> EnergyDetection = new HashMap<Double, Double>();
 
@@ -157,7 +157,7 @@ public abstract class SecondaryUser {
 		double snr=inf;
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			Double ED = Detector.energyDetection(
-					SignalProcessor.getEnergyDetectorThreshold(pfa,snr), VectorSignalEnergy.get(i));
+					SignalProcessor.getEnergyDetectorThreshold(pfa,snr,fileName), VectorSignalEnergy.get(i));
 			EnergyDetection.put((double)(snr+=0.5), ED);
 			//snr++;
 		}

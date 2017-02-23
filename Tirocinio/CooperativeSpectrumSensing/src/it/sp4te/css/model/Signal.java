@@ -1,6 +1,7 @@
 package it.sp4te.css.model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /** <p>Titolo: Signal</p>
  * <p>Descrizione: Classe per la generazione del segnale</p>
@@ -15,11 +16,11 @@ public class Signal extends AbstractSignal{
 	 * @param signalLenght Lunghezza del segnale
 	 **/
 
-	public Signal(int signalLenght) {
-		lenght = signalLenght;
+	public Signal(int signalLength) {
+		length = signalLength;
 		samplesRe = new ArrayList<Double>();
 		samplesIm = new ArrayList<Double>();
-		for (int i = 0; i < lenght; i++) {
+		for (int i = 0; i < length; i++) {
 			double v = Math.random();
 			if (v < 0.5) {
 				samplesRe.add(i, 1 / Math.sqrt(2));
@@ -36,18 +37,22 @@ public class Signal extends AbstractSignal{
 		}
 	}
 	
-	public Signal(int signalLenght, double power) {
+	public Signal(int signalLength, double power) {
 		double x;
-		lenght = signalLenght;
+		 x=2;
+		length = signalLength;
 		samplesRe = new ArrayList<Double>();
 		samplesIm = new ArrayList<Double>();
-		if(power==0.8)
+		if(power == 0.8)
 			x=2.5;
 		if(power == 1.2)
 			x=1.6665;
-		else x=2;
+		if(power == 1.1)
+			x=1.8181;
+		if(power == 0.9)
+			x=2.2222;
 		if(power != 0.0){
-		for (int i = 0; i < lenght; i++) {
+		for (int i = 0; i < length; i++) {
 			double v = Math.random();
 			if (v < 0.5) {
 				samplesRe.add(i, 1 / Math.sqrt(x));
@@ -63,13 +68,34 @@ public class Signal extends AbstractSignal{
 
 		}
 		}else
-			for (int i = 0; i < lenght; i++) {
+			for (int i = 0; i < length; i++) {
 					samplesRe.add(0.0);
 					samplesIm.add(0.0);
 				}
-		
 	}
 	
+	public  Signal(int signalLength, int y){
+		Random r = new Random();
+		double x = 0.8 + (1.2 - 0.8) * r.nextDouble(); 
+		length = signalLength;
+		samplesRe = new ArrayList<Double>();
+		samplesIm = new ArrayList<Double>();
+		for (int i = 0; i < length; i++) {
+			double v = Math.random();
+			if (v < 0.5) {
+				samplesRe.add(i, 1 / Math.sqrt(x));
+			} else {
+				samplesRe.add(i, -1 / Math.sqrt(x));
+			}
+			double p = Math.random();
+			if (p < 0.5) {
+				samplesIm.add(i, 1 / Math.sqrt(x));
+			} else {
+				samplesIm.add(i, -1 / Math.sqrt(x));
+			}
+
+		}
+	}
 	
 
 	/** Metodo per dividere il segnale in una porzione.

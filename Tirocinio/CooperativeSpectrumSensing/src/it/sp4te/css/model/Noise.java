@@ -30,16 +30,16 @@ public class Noise extends AbstractSignal {
 		double normalizeSnr = Math.pow(10, (snr / 10));
 		this.variance = (1 / normalizeSnr);
 		this.snr=snr;
-		lenght = noiseLenght;
+		length = noiseLenght;
 
 		samplesRe = new ArrayList<Double>();
-		for (int i = 0; i < lenght; i++) {
+		for (int i = 0; i < length; i++) {
 			sample = new Random();
 			samplesRe.add(i, (sample.nextGaussian() * Math.sqrt(variance/2)));
 
 		}
 		samplesIm = new ArrayList<Double>();
-		for (int i = 0; i < lenght; i++) {
+		for (int i = 0; i < length; i++) {
 			sample = new Random();
 			samplesIm.add(i, (sample.nextGaussian() * Math.sqrt(variance/2)));
 		}

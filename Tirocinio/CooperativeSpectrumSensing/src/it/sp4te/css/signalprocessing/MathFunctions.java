@@ -20,7 +20,7 @@ public class MathFunctions {
 	 * @return La media del vettore
 	 * **/
 	
-	public static double Mean(ArrayList<Double> a) {
+	public static  double Mean(ArrayList<Double> a) {
 		double sum = 0;
 		for (int i = 0; i < a.size(); i++) {
 			sum = sum + a.get(i);
@@ -42,6 +42,17 @@ public class MathFunctions {
 
 		return (Mean(b)) - (Math.pow(Mean(a), 2));
 	}
+	
+	public static double getVariance(ArrayList<Double> a)
+	    {
+	        double mean = Mean(a);
+	        double temp = 0;
+	        for (int i = 0; i < a.size(); i++){
+	        	double sample = a.get(i);
+	            temp += (sample-mean)*(sample-mean);
+	        }
+	        return temp/a.size();
+	    }
 
 	/** Metodo per effettuare la somma di due vettori. In questo caso verrà utilizzata per la somma
 	 * dei vettori relativi al Segnale e al Rumore

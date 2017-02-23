@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class AbstractSignal {
 	ArrayList<Double> samplesRe;
 	ArrayList<Double> samplesIm;
-	int lenght;
+	int length;
 
 
 	public ArrayList<Double> getSamplesRe() {
@@ -30,11 +30,11 @@ public abstract class AbstractSignal {
 	}
 
 	public int getLenght() {
-		return lenght;
+		return length;
 	}
 
 	public void setLenght(int signalLenght) {
-		this.lenght = signalLenght;
+		this.length = signalLenght;
 	}
 
 

@@ -65,7 +65,7 @@ public class SpectrumSensing {
 		// Inizializzo la Mappa per il grafico
 		DetectionGraph.put("Moment Energy Detection", MomentEnergyDetection);
 		DetectionGraph.put("Block Energy Detection", BlockEnergyDetection);
-		DetectionGraph.put("Traditional Energy Detection", TraditionalEnergyDetection);
+		DetectionGraph.put("Traditional Energy Detection Hs2/Hs3", TraditionalEnergyDetection);
 		DetectionGraph.put("Proposed Detection", ProposedDetection);
 
 		Chart4jGraphGenerator SpectrumSensingGraph= new Chart4jGraphGenerator();

@@ -256,6 +256,9 @@ public class SignalProcessor {
 
 		return EnergyVector;}
 
+
+	
+	
 	/**
 	 * Metodo per il calcolo della soglia necessaria per la Detection del metodo
 	 * proposto.
@@ -303,7 +306,7 @@ public class SignalProcessor {
 	 * @throws Exception
 	 */
 	
-	public static double getEnergyDetectorThreshold(double pfa, double snr) throws FileNotFoundException{
+	public static double getEnergyDetectorThreshold(double pfa, double snr,String fileName) throws FileNotFoundException{
 		if(!thresholds.isEmpty()){
 			Double threshold = thresholds.get(snr);
 			if(threshold!=null)
@@ -315,7 +318,7 @@ public class SignalProcessor {
 			
 			}
 		}
-	   readSaveThresholdsFromFile(pfa);
+	   readSaveThresholdsFromFile(fileName);
 	   Double threshold = thresholds.get(snr);
 	   if(threshold!=null)
 			return threshold;
@@ -329,8 +332,8 @@ public class SignalProcessor {
 		
 	}
 
-private static void readSaveThresholdsFromFile(double pfa) throws FileNotFoundException {
-	FileReader file=new FileReader("thresholds"+pfa+".txt");
+private static void readSaveThresholdsFromFile(String fileName) throws FileNotFoundException {
+	FileReader file=new FileReader(fileName+".txt");
 	Scanner scannerFile = new Scanner(file);
 	Scanner scannerLine = null;
 	while(scannerFile.hasNextLine()){
