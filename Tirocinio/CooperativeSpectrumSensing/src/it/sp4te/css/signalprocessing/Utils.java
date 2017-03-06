@@ -111,11 +111,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteBinaryDecisionVectors(
-			ArrayList<TrustedSecondaryUser> TrustedSecondaryUsers,double pfa) throws Exception {
+			ArrayList<TrustedSecondaryUser> TrustedSecondaryUsers,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<TrustedSecondaryUsers.size();i++){
-			userToBinaryDecision.put("TrustedSecondaryUser"+i, TrustedSecondaryUsers.get(i).computeBinaryDecisionVector(pfa));	
+			userToBinaryDecision.put("TrustedSecondaryUser"+i, TrustedSecondaryUsers.get(i).computeBinaryDecisionVector(pfa,fileName));	
 		}
 		return userToBinaryDecision;
 	}
@@ -289,7 +289,6 @@ public class Utils {
 		b.close();
 	}
 
-	
 
 	
 	public static void generateMDTText(String title, HashMap<String, ArrayList<Double>> detection ,int inf,int sup,String path) throws IOException{

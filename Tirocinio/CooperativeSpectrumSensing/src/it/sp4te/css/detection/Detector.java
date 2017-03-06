@@ -57,7 +57,23 @@ public class Detector {
 		        
 		return  (double)((100*cont)/ energy.size());
 	}
-
+	
+	public static double energyDetectionPUEA(Double threshold, ArrayList<Double> energy) {
+		double cont = 1;
+		//int t = (int)(threshold*10);
+		
+		for (int i = 0; i < energy.size(); i++) {
+			//int e = (int)(energy.get(i)*10);
+			if (energy.get(i) < threshold) {
+				
+				cont++;
+			
+			}
+			
+		}
+		        
+		return  (double)((100*cont)/ energy.size());
+	}
 
 	/**
 	 * Metodo per la creazione di un array di decisioni . Prende in input la soglia e un array di

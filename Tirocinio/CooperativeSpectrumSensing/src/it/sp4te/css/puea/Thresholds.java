@@ -13,7 +13,7 @@ public class Thresholds {
 		int length = 1000; // poi 10000
 		int attempts = 1000; //tentativi
 		double inf = -30; //da -20db
-		double sup = -10; //a 5.5db
+		double sup = 10; //a 5.5db
 		int block=10; //blocchi energy Detector
 		double pfa=0.01; //probabilità di falso allarme
 		
@@ -35,13 +35,13 @@ public class Thresholds {
 		double PUEenergy_11 = SignalProcessor.computeEnergy(PUEsignal_11);
 	
 //        
-//		p.generateThresholdHs2_Hs3(PUsignal, length, PUenergy, attempts, inf, sup, pfa);//che sarebbe come attaccante a energia 1
-//		p.generateThresholdHs2_Hs3(PUEsignal_08, length, PUEenergy_08, attempts, inf, sup, pfa);
+	//p.generateThresholdHs1_Hs2(PUsignal, length, PUenergy, attempts, inf, sup, pfa);//che sarebbe come attaccante a energia 1
+		//p.generateThresholdHs2_Hs3(PUEsignal_08, length, PUEenergy_08, attempts, inf, sup, pfa);
 //		p.generateThresholdHs2_Hs3(PUEsignal_09, length, PUEenergy_09, attempts, inf, sup, pfa);
 //		p.generateThresholdHs2_Hs3(PUEsignal_11, length, PUEenergy_11, attempts, inf, sup, pfa);
-//		p.generateThresholdHs2_Hs3(PUEsignal_12, length, PUEenergy_12, attempts, inf, sup, pfa);
+		//p.generateThresholdHs1_Hs2(PUsignal, length, PUenergy, attempts, inf, sup, pfa);
 
-       Utils.generateThreshold(length, PUenergy, attempts, inf, sup, pfa);
+     Utils.generateThreshold(length, PUenergy, attempts, inf, sup, pfa);
 
 
 	}

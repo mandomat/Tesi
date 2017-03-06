@@ -21,6 +21,7 @@ import it.sp4te.css.model.Signal;
 
 public class SignalProcessor {
   private static Map<Double,Double> thresholds = new HashMap<>();
+  static String fileName = "unknown";
 	
 	/**
 	 * Metodo per ordinare una mappa in base alla chiave.
@@ -306,24 +307,28 @@ public class SignalProcessor {
 	 * @throws Exception
 	 */
 	
-	public static double getEnergyDetectorThreshold(double pfa, double snr,String fileName) throws FileNotFoundException{
-		if(!thresholds.isEmpty()){
+	public static double getEnergyDetectorThreshold(double pfa, double snr,String newFileName ) throws FileNotFoundException{
+		if(fileName.equals("unknown"))
+			fileName=newFileName;
+			
+		if(!thresholds.isEmpty() && fileName.equals(newFileName)){
 			Double threshold = thresholds.get(snr);
 			if(threshold!=null)
 				return threshold;
 			else {
-				System.out.println("The simulation has been aborted. Value for specific SNR not found.");
+				System.out.println("The simulation has been aborted. Value for specific SNR ("+snr+") not found.");
 				System.exit(1);
 				return -1;
 			
 			}
 		}
-	   readSaveThresholdsFromFile(fileName);
+	   fileName=newFileName;
+	   readSaveThresholdsFromFile(newFileName);
 	   Double threshold = thresholds.get(snr);
 	   if(threshold!=null)
 			return threshold;
 		else {
-			System.out.println("The simulation has been aborted. Value for specific SNR not found.");
+			System.out.println("The simulation has been aborted. Value for specific SNR ("+snr+") not found.");
 			System.exit(1);
 			return -1;
 		}

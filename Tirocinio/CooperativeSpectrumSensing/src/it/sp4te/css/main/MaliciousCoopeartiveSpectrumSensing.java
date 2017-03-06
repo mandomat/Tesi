@@ -23,7 +23,7 @@ public class MaliciousCoopeartiveSpectrumSensing {
 		//------------------------------------------------Presenza utente primario-------------------//	
 		ArrayList<Double> CooperativeEnergyDetectionAndFusionPresence = new ArrayList<Double>();;
 		ArrayList<Double> CooperativeEnergyDetectionOrFusionPresence = new ArrayList<Double>();;
-		ArrayList<Double> CooperativeEnergyDetectionMajorityFusionPresence = new ArrayList<Double>();;
+		ArrayList<Double> CooperativeEnergyDetectionMajorityFusionPresence = new ArrayList<Double>();
 
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecisionPresence=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 

@@ -45,7 +45,7 @@ public class PUEAgraph {
 		PrimaryUser PU= new PrimaryUser();
 		Signal PUsignal = PU.createAndSend(length);
 		
-		//Creo l'attaccante e ne genero segnalim a potenza 1
+		//Creo l'attaccante e ne genero segnale a potenza 1
 		PrimaryUserEmulator PUE = new PrimaryUserEmulator();
 		Signal PUEsignal = PUE.createAndSend(length, 1);
 		

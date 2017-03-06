@@ -30,10 +30,23 @@ public class PUEA {
 	public static void generateThresholdHs2_Hs3(Signal s,int length,double energy,int attempts,double inf,double sup,double pfa) throws Exception{
 		FileWriter w=new FileWriter("thresholdsHs2_Hs3"+pfa+"_"+energy+".txt");
 		BufferedWriter b=new BufferedWriter(w);
-		ArrayList<ArrayList<Double>> VectorNoiseEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);	
+		ArrayList<ArrayList<Double>> VectorNoiseAndSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);	
 		double snr=inf;
-		for (int i = 0; i < VectorNoiseEnergy.size(); i++) {
-			b.write(snr+" "+ SignalProcessor.computeEnergyDetectorThreshold(pfa, VectorNoiseEnergy.get(i)));
+		for (int i = 0; i < VectorNoiseAndSignalEnergy.size(); i++) {
+			b.write(snr+" "+ SignalProcessor.computeEnergyDetectorThreshold(pfa, VectorNoiseAndSignalEnergy.get(i)));
+			b.write(System.lineSeparator());
+			snr+=0.5;
+		}
+		b.close();
+	}
+	
+	public static void generateThresholdHs1_Hs2(Signal s,int length,double energy,int attempts,double inf,double sup,double pfa) throws Exception{
+		FileWriter w=new FileWriter("thresholdsHs1_Hs2"+pfa+"_"+energy+".txt");
+		BufferedWriter b=new BufferedWriter(w);
+		ArrayList<ArrayList<Double>> VectorNoiseAndSignalEnergy=SignalProcessor.computeVectorsEnergy(s, length, energy, attempts, inf, sup);	
+		double snr=inf;
+		for (int i = 0; i < VectorNoiseAndSignalEnergy.size(); i++) {
+			b.write(snr+" "+ SignalProcessor.computeEnergyDetectorThreshold(pfa, VectorNoiseAndSignalEnergy.get(i)));
 			b.write(System.lineSeparator());
 			snr+=0.5;
 		}
