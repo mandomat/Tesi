@@ -15,7 +15,7 @@ import it.sp4te.css.model.Signal;
 import it.sp4te.css.signalprocessing.MathFunctions;
 import it.sp4te.css.signalprocessing.SignalProcessor;
 
-public class PUEA {
+public class PUEAenergy {
 	
 	public static void writeEnergyVectorOnFile(ArrayList<Double> vector,String fileName) throws Exception{
 		FileWriter w=new FileWriter(""+fileName+".txt");

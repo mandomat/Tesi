@@ -17,7 +17,7 @@ public class Thresholds {
 		int block=10; //blocchi energy Detector
 		double pfa=0.01; //probabilità di falso allarme
 		
-		PUEA p = new PUEA();
+		PUEAenergy p = new PUEAenergy();
 		PrimaryUser PU= new PrimaryUser();
 		Signal PUsignal = PU.createAndSend(length);
 		
@@ -36,7 +36,7 @@ public class Thresholds {
 	
 //        
 	//p.generateThresholdHs1_Hs2(PUsignal, length, PUenergy, attempts, inf, sup, pfa);//che sarebbe come attaccante a energia 1
-		//p.generateThresholdHs2_Hs3(PUEsignal_08, length, PUEenergy_08, attempts, inf, sup, pfa);
+		p.generateThresholdHs2_Hs3(PUEsignal_08, length, PUEenergy_08, attempts, inf, sup, pfa);
 //		p.generateThresholdHs2_Hs3(PUEsignal_09, length, PUEenergy_09, attempts, inf, sup, pfa);
 //		p.generateThresholdHs2_Hs3(PUEsignal_11, length, PUEenergy_11, attempts, inf, sup, pfa);
 		//p.generateThresholdHs1_Hs2(PUsignal, length, PUenergy, attempts, inf, sup, pfa);

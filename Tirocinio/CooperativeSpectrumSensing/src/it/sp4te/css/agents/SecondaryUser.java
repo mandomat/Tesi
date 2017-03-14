@@ -59,7 +59,7 @@ public abstract class SecondaryUser {
 	 * @throws Exception Pfa deve essere scelto in modo che 1-2pfa sia compreso tra -1 e 1
 	 **/
 
-	public ArrayList<Double> spectrumSensingBlockEnergyDetector(Double pfa) throws Exception{
+	public ArrayList<Double> spectrumSensingBlockEnergyDetector(Double pfa,String fileName) throws Exception{
 		HashMap<Double, Double> EnergyDetection = new HashMap<Double, Double>();
 		ArrayList<ArrayList<Double>> MediumSignalEnergy;
 		if(s!=null){
@@ -74,7 +74,7 @@ public abstract class SecondaryUser {
 		for (int i = 0; i < MediumSignalEnergy.size(); i++) {
 	
 			
-			Double ED = Detector.energyDetection(SignalProcessor.getEnergyDetectorThreshold(pfa, snr), MediumSignalEnergy.get(i));
+			Double ED = Detector.energyDetection(SignalProcessor.getEnergyDetectorThreshold(pfa, snr,fileName), MediumSignalEnergy.get(i));
 			EnergyDetection.put((double)(snr+=0.5), ED);
 			//diatriba tra inf e snr
 		}
@@ -212,5 +212,7 @@ public abstract class SecondaryUser {
 
 		return decisions;
 	}
+
+	
 
 }

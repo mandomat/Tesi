@@ -132,11 +132,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteTrustedNodeBinaryDecisionVectors(
-			ArrayList<TrustedNode> TrustedNode,double pfa) throws Exception {
+			ArrayList<TrustedNode> TrustedNode,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> trustedNodeToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<TrustedNode.size();i++){
-			trustedNodeToBinaryDecision.put("TrustedNode_"+i, TrustedNode.get(i).computeBinaryDecisionVector(pfa));	
+			trustedNodeToBinaryDecision.put("TrustedNode_"+i, TrustedNode.get(i).computeBinaryDecisionVector(pfa,fileName));	
 		}
 		return trustedNodeToBinaryDecision;
 	}
@@ -194,11 +194,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteOppositeBinaryDecisionVectors(
-			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa) throws Exception {
+			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<MaliciousSecondaryUsers.size();i++){
-			userToBinaryDecision.put("MaliciousOppositeSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeOppositeBinaryDecisionVector(pfa));	
+			userToBinaryDecision.put("MaliciousOppositeSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeOppositeBinaryDecisionVector(pfa,fileName));	
 		}
 		return userToBinaryDecision;
 	}	
@@ -215,11 +215,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteIntelligentOppositeMaliciousBinaryDecisionVectors(
-			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa) throws Exception {
+			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<MaliciousSecondaryUsers.size();i++){
-			userToBinaryDecision.put("MaliciousIntelligentOppositeSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentOppositeBinaryDecisionVector(pfa));	
+			userToBinaryDecision.put("MaliciousIntelligentOppositeSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentOppositeBinaryDecisionVector(pfa,fileName));	
 		}
 		return userToBinaryDecision;
 	}
@@ -236,11 +236,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteIntelligentAbsenceMaliciousBinaryDecisionVectors(
-			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa) throws Exception {
+			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<MaliciousSecondaryUsers.size();i++){
-			userToBinaryDecision.put("MaliciousIntelligentAbsenceSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentAbsenceBinaryDecisionVector(pfa));	
+			userToBinaryDecision.put("MaliciousIntelligentAbsenceSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentAbsenceBinaryDecisionVector(pfa,fileName));	
 		}
 		return userToBinaryDecision;
 	}
@@ -257,11 +257,11 @@ public class Utils {
 	 * **/
 
 	public static HashMap<String,ArrayList<ArrayList<Integer>>> genereteIntelligentPresenceMaliciousBinaryDecisionVectors(
-			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa) throws Exception {
+			ArrayList<MaliciousSecondaryUser> MaliciousSecondaryUsers,double pfa,String fileName) throws Exception {
 		HashMap<String,ArrayList<ArrayList<Integer>>> userToBinaryDecision=new HashMap<String,ArrayList<ArrayList<Integer>>>();
 
 		for(int i=0;i<MaliciousSecondaryUsers.size();i++){
-			userToBinaryDecision.put("MaliciousIntelligentPresenceSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentPresenceBinaryDecisionVector(pfa));	
+			userToBinaryDecision.put("MaliciousIntelligentPresenceSecondaryUser"+i, MaliciousSecondaryUsers.get(i).computeIntelligentPresenceBinaryDecisionVector(pfa,fileName));	
 		}
 		return userToBinaryDecision;
 	}

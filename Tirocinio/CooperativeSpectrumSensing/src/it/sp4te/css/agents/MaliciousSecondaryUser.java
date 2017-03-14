@@ -60,7 +60,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 	 * @return Una lista di liste contenente per ogni SNR, una lista decisioni binarie Opporte sulla presenza o assenza dell'utente primario di cardinalità pari al numero di prove
 	 * @throws Exception **/
 
-	public ArrayList<ArrayList<Integer>> computeOppositeBinaryDecisionVector(double pfa) throws Exception{
+	public ArrayList<ArrayList<Integer>> computeOppositeBinaryDecisionVector(double pfa,String fileName) throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
 
 		ArrayList<ArrayList<Double>> VectorSignalEnergy;
@@ -72,7 +72,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.oppositeBinaryDetector(
-					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), VectorSignalEnergy.get(i));
+					SignalProcessor.getEnergyDetectorThreshold(pfa, snr,fileName), VectorSignalEnergy.get(i));
 			decisions.add(snrDecisions);
 			snr++;
 		}
@@ -89,7 +89,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 	 * @return Una lista di liste contenente per ogni SNR, una lista decisioni binarie errate in maniera casuale sulla presenza o assenza dell'utente primario di cardinalità pari al numero di prove
 	 * @throws Exception **/
 
-	public ArrayList<ArrayList<Integer>> computeIntelligentOppositeBinaryDecisionVector(double pfa) throws Exception{
+	public ArrayList<ArrayList<Integer>> computeIntelligentOppositeBinaryDecisionVector(double pfa,String fileName) throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
 		ArrayList<ArrayList<Double>> VectorSignalEnergy;
 		if(s!=null){
@@ -100,7 +100,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentOppositeMaliciousBinaryDetector(
-					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), VectorSignalEnergy.get(i));
+					SignalProcessor.getEnergyDetectorThreshold(pfa, snr,fileName), VectorSignalEnergy.get(i));
 			decisions.add(snrDecisions);
 			snr++;
 
@@ -117,7 +117,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 	 * @return Una lista di liste contenente per ogni SNR, una lista decisioni binarie errate in maniera casuale sulla presenza o assenza dell'utente primario di cardinalità pari al numero di prove
 	 * @throws Exception **/
 
-	public ArrayList<ArrayList<Integer>> computeIntelligentAbsenceBinaryDecisionVector(double pfa) throws Exception{
+	public ArrayList<ArrayList<Integer>> computeIntelligentAbsenceBinaryDecisionVector(double pfa,String fileName) throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
 		ArrayList<ArrayList<Double>> VectorSignalEnergy;
 		if(s!=null){
@@ -128,7 +128,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentAbsenceMaliciousBinaryDetector(
-					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), VectorSignalEnergy.get(i));
+					SignalProcessor.getEnergyDetectorThreshold(pfa, snr,fileName), VectorSignalEnergy.get(i));
 			decisions.add(snrDecisions);
 			snr++;
 
@@ -145,7 +145,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 	 * @return Una lista di liste contenente per ogni SNR, una lista decisioni binarie errate in maniera casuale sulla presenza o assenza dell'utente primario di cardinalità pari al numero di prove
 	 * @throws Exception **/
 
-	public ArrayList<ArrayList<Integer>> computeIntelligentPresenceBinaryDecisionVector(double pfa) throws Exception{
+	public ArrayList<ArrayList<Integer>> computeIntelligentPresenceBinaryDecisionVector(double pfa,String fileName) throws Exception{
 		ArrayList<ArrayList<Integer>> decisions= new  ArrayList<ArrayList<Integer>>();
 
 
@@ -158,7 +158,7 @@ public class MaliciousSecondaryUser extends SecondaryUser {
 		for (int i = 0; i < VectorSignalEnergy.size(); i++) {
 			//System.out.println(inf-1);
 			ArrayList<Integer> snrDecisions = Detector.intelligentPresenceMaliciousBinaryDetector(
-					SignalProcessor.getEnergyDetectorThreshold(pfa, snr), VectorSignalEnergy.get(i));
+					SignalProcessor.getEnergyDetectorThreshold(pfa, snr,fileName), VectorSignalEnergy.get(i));
 			decisions.add(snrDecisions);
 			snr++;
 

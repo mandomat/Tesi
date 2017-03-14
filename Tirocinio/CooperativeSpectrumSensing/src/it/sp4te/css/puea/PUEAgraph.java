@@ -11,7 +11,7 @@ import it.sp4te.css.model.Noise;
 import it.sp4te.css.model.Signal;
 import it.sp4te.css.signalprocessing.MathFunctions;
 import it.sp4te.css.signalprocessing.SignalProcessor;
-import it.sp4te.css.puea.PUEA;
+import it.sp4te.css.puea.PUEAenergy;
 
 public class PUEAgraph {
 

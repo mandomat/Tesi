@@ -1,7 +1,11 @@
 package it.sp4te.css.puea;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 import it.sp4te.css.agents.FusionCenter;
 import it.sp4te.css.agents.PrimaryUser;
@@ -19,12 +23,12 @@ public class CascadeTest {
 	static int attempts = 1000; //tentativi
 	static double inf = -30; //da -20db
 	static double sup = 0; //a 5.5db
-	static int block=10; //blocchi energy Detector
+	static int block=8; //blocchi energy Detector
 	static double pfa=0.01; //probabilità di falso allarme
-	static int SUs =5;
+	static int SUs =20;
 	static String H1_file = "thresholds0.01";
 	static String H3_file = "thresholdsHs1_Hs";
-	static String H1_H2_file = "thresholdsHs2_Hs30.01_0.7991999999999717";
+	static String H1_H2_file = "thresholdsHs2_Hs30.01_0.9989999999999999";
 	
 	
 	public static void findHypothesisCSS(Signal s) throws Exception{
@@ -91,7 +95,7 @@ public class CascadeTest {
 						H0=false;
 					System.out.println("non siamo in H0");
 					}
-					}
+				}
 				
 				for (double ED: TraditionalEnergyDetectionHs2_Hs3){
 					if(ED>=99.0){
@@ -114,8 +118,23 @@ public class CascadeTest {
 					
 				
 				}
+//				writeDecisions("H0",TraditionalEnergyDetectionHs0_Hs1);
+//				writeDecisions("H3",TraditionalEnergyDetectionHs2_Hs3);
 				Chart4jGraphGenerator SpectrumSensingGraph= new Chart4jGraphGenerator();
-				SpectrumSensingGraph.drawSNRtoDetectionGraph("Detection Methods",DetectionGraph, inf, sup);
+				SpectrumSensingGraph.drawSNRtoDetectionGraph("Energy detector",DetectionGraph, inf, sup);
+	}
+	
+	public static void writeDecisions(String fileName,ArrayList<Double> sensing ) throws IOException{
+		
+			FileWriter w=new FileWriter(fileName+".txt");
+			BufferedWriter b=new BufferedWriter(w);	
+			for (int i = 0; i < sensing.size(); i++) {
+				b.write(sensing.get(i).toString());
+				b.write(System.lineSeparator());
+			}
+			b.close();
+		
+		
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -185,7 +204,7 @@ public class CascadeTest {
 //				H3_signal_12.setSamplesRe(MathFunctions.SumVector(PU_noise.getSamplesRe(), PUEsignal_12.getSamplesRe()));
 				
 				findHypothesisSingleSU(PUEsignal_12);
-				
+				//findHypothesisCSS(PUEsignal_08);
 				
 	}
 }
